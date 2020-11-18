@@ -15,3 +15,11 @@ dist/
 htmlcov/
 env
 .ipynb_checkpoints
+*.npy
+*.pkl
+*.csv
+*.hdf5
+*.dat
+*.npz
+*.bin
+*.dir
