@@ -11,7 +11,13 @@ python preprocess.py
 
 The script assumes you have a CSV file of messages called `messages_100k.csv` to preprocess. When the script finishes, you should have the following files: `vocab.pkl`, `corpus.pkl`, `bow.npy`, `doc_ids.npy`, `flattened.npy`, `pruned.npy`, and `vectors.npy`.
 
-Next, move into the `lda2vec` directory, then run:
+Next, fill out the `.env` file with configuration parameters for training. Then source them into your environment:
+
+```bash
+source .env
+```
+
+Then move into the `lda2vec` directory and run:
 
 ```bash
 python lda2vec_run.py

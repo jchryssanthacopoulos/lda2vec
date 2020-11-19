@@ -46,11 +46,11 @@ clambda = 200.0
 n_topics = int(os.getenv('n_topics', 20))
 batchsize = 4096
 # Number of epochs
-num_epochs = 200
+n_epochs = int(os.getenv('n_epochs', 200))
 # Power for neg sampling
 power = float(os.getenv('power', 0.75))
 # Intialize with pretrained word vectors
-pretrained = bool(int(os.getenv('pretrained', True)))
+pretrained = False if os.getenv('pretrained', 'False') == 'False' else True
 # Sampling temperature
 temperature = float(os.getenv('temperature', 1.0))
 # Number of dimensions in a single word vector
@@ -89,7 +89,7 @@ j = 0
 epoch = 0
 fraction = batchsize * 1.0 / flattened.shape[0]
 with shelve.open('progress.shelve') as progress:
-    for epoch in range(num_epochs):
+    for epoch in range(n_epochs):
         data = prepare_topics(cuda.to_cpu(model.mixture.weights.W.data).copy(),
                             cuda.to_cpu(model.mixture.factors.W.data).copy(),
                             cuda.to_cpu(model.sampler.W.data).copy(),
