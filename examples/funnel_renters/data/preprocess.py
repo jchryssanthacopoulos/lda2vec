@@ -38,7 +38,7 @@ corpus.finalize()
 compact = corpus.to_compact(tokens)
 
 # Remove extremely rare words
-pruned = corpus.filter_count(compact, min_count=100)
+pruned = corpus.filter_count(compact, min_count=1000)
 
 # Convert the compactified arrays into bag of words arrays
 bow = corpus.compact_to_bow(pruned)

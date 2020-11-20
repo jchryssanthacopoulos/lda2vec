@@ -28,12 +28,10 @@ fn_vocab = '{data_dir:s}/vocab.pkl'.format(data_dir=data_dir)
 fn_corpus = '{data_dir:s}/corpus.pkl'.format(data_dir=data_dir)
 fn_flatnd = '{data_dir:s}/flattened.npy'.format(data_dir=data_dir)
 fn_docids = '{data_dir:s}/doc_ids.npy'.format(data_dir=data_dir)
-fn_vectors = '{data_dir:s}/vectors.npy'.format(data_dir=data_dir)
 vocab = pickle.load(open(fn_vocab, 'rb'))
 corpus = pickle.load(open(fn_corpus, 'rb'))
 flattened = np.load(fn_flatnd)
 doc_ids = np.load(fn_docids)
-vectors = np.load(fn_vectors)
 
 # Model Parameters
 # Number of documents
@@ -78,6 +76,8 @@ if os.path.exists('lda2vec.hdf5'):
     print("Reloading from saved")
     serializers.load_hdf5("lda2vec.hdf5", model)
 if pretrained:
+    fn_vectors = '{data_dir:s}/vectors.npy'.format(data_dir=data_dir)
+    vectors = np.load(fn_vectors)
     model.sampler.W.data[:, :] = vectors[:n_vocab, :]
 model.to_gpu()
 optimizer = O.Adam()
