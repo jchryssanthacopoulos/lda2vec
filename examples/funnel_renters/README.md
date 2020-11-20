@@ -25,4 +25,8 @@ python lda2vec_run.py
 
 It should save the files: `topics.pyldavis.npz`, `lda2vec.hdf5`, and `progress.shelve.dat`.
 
-You can then visualize the results with `lda2vec.ipynb`.
+You can then visualize the results with `lda2vec.ipynb`. To create a new Jupyter kernel, run:
+
+```bash
+ipython kernel install --name "lda2vec" --user
+```
